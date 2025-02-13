@@ -1,4 +1,3 @@
-import sys
 import os
 from pathlib import Path
 import sys
@@ -41,13 +40,13 @@ def totp_tool():
         print("2. Generate New TOTP Key")
         print("3. Get TOTP Code")
         print("4. Return to Main Menu")
-        
+
         choice = input("Choose an option: ")
-        
+
         # Change to the TOTP directory to ensure proper file access
         original_dir = os.getcwd()
         os.chdir(totp_dir)
-        
+
         try:
             if choice == "1":
                 if Path("totp_keys.encrypted").exists():
@@ -56,36 +55,36 @@ def totp_tool():
                     if confirm.lower() != 'y':
                         print("Setup cancelled.")
                         continue
-                
+
                 print("\nInitializing TOTP Setup...")
                 os.system(f"{sys.executable} setup.py")
-                
+
             elif choice == "2":
                 if not Path("totp_keys.encrypted").exists():
                     print("\nPlease run First Time Setup before generating keys.")
                     continue
-                    
+
                 print("\nGenerating new TOTP key...")
                 os.system(f"{sys.executable} keygen.py")
-                
+
             elif choice == "3":
                 if not Path("totp_keys.encrypted").exists():
                     print("\nPlease run First Time Setup before generating codes.")
                     continue
-                    
+
                 print("\nGenerating TOTP code...")
                 os.system(f"{sys.executable} otpapp.py")
-                
+
             elif choice == "4":
                 break
-                
+
             else:
                 print("Invalid choice. Please try again.")
-                
+
         finally:
             # Always return to the original directory
             os.chdir(original_dir)
-        
+
         input("\nPress Enter to continue...")
 
 def main():
@@ -94,7 +93,7 @@ def main():
         if choice == "1":
             hash_generator_tool()
         elif choice == "2":
-          password_analyzer_tool()
+            password_analyzer_tool()
         elif choice == "3":
             totp_tool()
         elif choice == "4":
