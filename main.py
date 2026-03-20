@@ -16,7 +16,8 @@ def show_menu():
     print("2. Password Strength Analyzer")
     print("3. TOTP Generator")
     print("4. Host Public IP")
-    print("5. Exit")
+    print("5. Encryption Tool")
+    print("6. Exit")
 
     return input("Choose an option: ")
 
@@ -39,8 +40,14 @@ def host_public_ip_tool():
     host_public_ip.main()  # Import inside function to prevent unwanted execution
 
 
+def encryption_tool():
+    import encryption_tool
+
+    encryption_tool.main()
+
+
 def totp_tool():
-    totp_dir = Path("modules/TOTP")
+    totp_dir = Path("TOTP")
 
     if not totp_dir.exists():
         print("\nError: TOTP module not found!")
@@ -117,6 +124,8 @@ def main():
         elif choice == "4":
             host_public_ip_tool()
         elif choice == "5":
+            encryption_tool()
+        elif choice == "6":
             print("Goodbye!")
             sys.exit(0)
         else:

@@ -159,63 +159,6 @@ def generate_html(leaderboard):
 
     return html
 
-
-    for rank, contributor in enumerate(leaderboard, start=1):
-        html += """
-                <tr>
-                    <td>{}</td>
-                    <td><img src="{}" class="avatar"> {}</td>
-                    <td>{}</td>
-                </tr>
-        """.format(rank, contributor["avatar_url"], contributor["username"], contributor["contributions"])
-
-    html += """
-            </tbody>
-        </table>
-
-        <script>
-            function createParticle() {{
-                const particle = document.createElement("div");
-                particle.classList.add("particle");
-                document.body.appendChild(particle);
-
-                particle.style.left = Math.random() * 100 + "vw";
-                particle.style.top = Math.random() * 100 + "vh";
-                particle.style.animationDuration = Math.random() * 10 + 5 + "s";
-
-                setTimeout(() => {{
-                    particle.remove();
-                }}, 15000);
-            }}
-
-            setInterval(createParticle, 500);
-        </script>
-
-    </body>
-    </html>
-    """
-
-    return html
-
-
-
-    for rank, contributor in enumerate(leaderboard, start=1):
-        html += """
-                <tr>
-                    <td>{}</td>
-                    <td><img src="{}" class="avatar"> {}</td>
-                    <td>{}</td>
-                </tr>
-        """.format(rank, contributor["avatar_url"], contributor["username"], contributor["contributions"])
-
-    html += """
-            </tbody>
-        </table>
-    </body>
-    </html>
-    """
-    return html
-
 def save_html_to_file(html, filename="leaderboard.html"):
     """Save HTML to file."""
     with open(filename, "w") as file:
